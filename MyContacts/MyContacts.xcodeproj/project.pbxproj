@@ -14,6 +14,7 @@
 		B851A51221842C0F00DAD220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B851A51021842C0F00DAD220 /* LaunchScreen.storyboard */; };
 		B851A51D21842C0F00DAD220 /* MyContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B851A51C21842C0F00DAD220 /* MyContactsTests.swift */; };
 		B851A52821842C0F00DAD220 /* MyContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B851A52721842C0F00DAD220 /* MyContactsUITests.swift */; };
+		B851A53921845C1800DAD220 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B851A53821845C1800DAD220 /* ContactsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B851A52321842C0F00DAD220 /* MyContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B851A52721842C0F00DAD220 /* MyContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactsUITests.swift; sourceTree = "<group>"; };
 		B851A52921842C0F00DAD220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B851A53821845C1800DAD220 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,13 @@
 		B851A50321842C0A00DAD220 /* MyContacts */ = {
 			isa = PBXGroup;
 			children = (
-				B851A50421842C0A00DAD220 /* AppDelegate.swift */,
-				B851A50821842C0A00DAD220 /* Main.storyboard */,
-				B851A50E21842C0F00DAD220 /* Assets.xcassets */,
-				B851A51021842C0F00DAD220 /* LaunchScreen.storyboard */,
-				B851A51321842C0F00DAD220 /* Info.plist */,
+				B851A537218431CE00DAD220 /* Storyboard */,
+				B851A536218431B200DAD220 /* ViewController */,
+				B851A5352184317900DAD220 /* Model */,
 				B851A50B21842C0A00DAD220 /* MyContacts.xcdatamodeld */,
+				B851A50421842C0A00DAD220 /* AppDelegate.swift */,
+				B851A50E21842C0F00DAD220 /* Assets.xcassets */,
+				B851A51321842C0F00DAD220 /* Info.plist */,
 			);
 			path = MyContacts;
 			sourceTree = "<group>";
@@ -123,6 +126,30 @@
 				B851A52921842C0F00DAD220 /* Info.plist */,
 			);
 			path = MyContactsUITests;
+			sourceTree = "<group>";
+		};
+		B851A5352184317900DAD220 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B851A536218431B200DAD220 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B851A53821845C1800DAD220 /* ContactsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B851A537218431CE00DAD220 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B851A50821842C0A00DAD220 /* Main.storyboard */,
+				B851A51021842C0F00DAD220 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +285,7 @@
 			files = (
 				B851A50521842C0A00DAD220 /* AppDelegate.swift in Sources */,
 				B851A50D21842C0A00DAD220 /* MyContacts.xcdatamodeld in Sources */,
+				B851A53921845C1800DAD220 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
