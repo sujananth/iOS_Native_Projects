@@ -15,6 +15,7 @@ class ContactTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contactProfileImageView.image = UIImage(named: "ContactProfilePlaceHolder")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

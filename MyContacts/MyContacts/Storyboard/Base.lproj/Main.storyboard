@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="tio-gp-Ow1" customClass="ContactTableViewCell" customModule="MyContacts" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kContactCellID" rowHeight="80" id="tio-gp-Ow1" customClass="ContactTableViewCell" customModule="MyContacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tio-gp-Ow1" id="m3f-3V-bBg">
@@ -131,17 +131,17 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-b2-FYP">
-                                <rect key="frame" x="0.0" y="214" width="375" height="453"/>
+                                <rect key="frame" x="0.0" y="214" width="375" height="413"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="73" id="ZBy-cS-9Db" customClass="ContactDetailTableViewCell" customModule="MyContacts" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kContactDetailCellID" rowHeight="73" id="ZBy-cS-9Db" customClass="ContactDetailTableViewCell" customModule="MyContacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZBy-cS-9Db" id="uf2-Kx-hY3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="User Input" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5V-8h-xt6">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5V-8h-xt6">
                                                     <rect key="frame" x="20" y="21" width="335" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -159,40 +159,30 @@
                                             <outlet property="contactDetailTextField" destination="B5V-8h-xt6" id="lan-sK-nFN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="38" id="ANW-5M-dQl" customClass="AddOrSaveContactTableViewCell" customModule="MyContacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101" width="375" height="38"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANW-5M-dQl" id="D8O-Ct-0Cw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="37.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSU-g2-i5L">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="37.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="OSU-g2-i5L" secondAttribute="bottom" id="CUA-hW-sy1"/>
-                                                <constraint firstAttribute="trailing" secondItem="OSU-g2-i5L" secondAttribute="trailing" id="Gm5-aI-Mo1"/>
-                                                <constraint firstItem="OSU-g2-i5L" firstAttribute="leading" secondItem="D8O-Ct-0Cw" secondAttribute="leading" id="f9g-sL-kyZ"/>
-                                                <constraint firstItem="OSU-g2-i5L" firstAttribute="top" secondItem="D8O-Ct-0Cw" secondAttribute="top" id="lhM-nv-Nca"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="addOrSaveContactLabel" destination="OSU-g2-i5L" id="hHD-45-vsv"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="566-tC-iFn" id="mYS-qO-9WP"/>
+                                    <outlet property="delegate" destination="566-tC-iFn" id="z82-YE-Yh5"/>
+                                </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkf-XY-k68">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onTappingAddOrSaveContactButton:" destination="566-tC-iFn" eventType="touchUpInside" id="pYR-zZ-6hK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Gkf-XY-k68" firstAttribute="leading" secondItem="bM4-DT-jq2" secondAttribute="leading" id="3HI-Hs-PEx"/>
+                            <constraint firstItem="Gkf-XY-k68" firstAttribute="top" secondItem="TTL-b2-FYP" secondAttribute="bottom" id="3kP-bC-rhy"/>
                             <constraint firstItem="f9H-Om-VXn" firstAttribute="top" secondItem="bM4-DT-jq2" secondAttribute="top" id="5RH-T2-r3t"/>
                             <constraint firstItem="TTL-b2-FYP" firstAttribute="top" secondItem="f9H-Om-VXn" secondAttribute="bottom" id="BW4-Vo-TTN"/>
                             <constraint firstItem="f9H-Om-VXn" firstAttribute="leading" secondItem="bM4-DT-jq2" secondAttribute="leading" id="Ddr-Ua-090"/>
-                            <constraint firstItem="bM4-DT-jq2" firstAttribute="bottom" secondItem="TTL-b2-FYP" secondAttribute="bottom" id="Qmt-9H-2jS"/>
+                            <constraint firstItem="bM4-DT-jq2" firstAttribute="bottom" secondItem="TTL-b2-FYP" secondAttribute="bottom" constant="40" id="Qmt-9H-2jS"/>
+                            <constraint firstItem="bM4-DT-jq2" firstAttribute="bottom" secondItem="Gkf-XY-k68" secondAttribute="bottom" id="Tja-SP-xMQ"/>
+                            <constraint firstItem="bM4-DT-jq2" firstAttribute="trailing" secondItem="Gkf-XY-k68" secondAttribute="trailing" id="UMh-g2-aRt"/>
                             <constraint firstItem="bM4-DT-jq2" firstAttribute="trailing" secondItem="TTL-b2-FYP" secondAttribute="trailing" id="fQO-7x-xAU"/>
                             <constraint firstItem="TTL-b2-FYP" firstAttribute="leading" secondItem="bM4-DT-jq2" secondAttribute="leading" id="mtj-Hx-IRv"/>
                             <constraint firstItem="f9H-Om-VXn" firstAttribute="trailing" secondItem="bM4-DT-jq2" secondAttribute="trailing" id="zmQ-zU-lWt"/>
@@ -200,6 +190,7 @@
                         <viewLayoutGuide key="safeArea" id="bM4-DT-jq2"/>
                     </view>
                     <connections>
+                        <outlet property="addOrSaveContactButton" destination="Gkf-XY-k68" id="NjB-hV-LIe"/>
                         <outlet property="contactDetailsListTableView" destination="TTL-b2-FYP" id="oif-ew-fdt"/>
                         <outlet property="contactProfileImage" destination="f9H-Om-VXn" id="BQZ-Cw-acc"/>
                     </connections>
