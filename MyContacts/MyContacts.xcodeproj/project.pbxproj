@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B83589B721858EA8007F7BEC /* AddOrEditContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83589B621858EA8007F7BEC /* AddOrEditContactsViewController.swift */; };
+		B83589BC218590CE007F7BEC /* ContactDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83589BB218590CE007F7BEC /* ContactDetailTableViewCell.swift */; };
+		B83589BE218590E2007F7BEC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83589BD218590E2007F7BEC /* ContactTableViewCell.swift */; };
+		B83589C0218590FC007F7BEC /* AddOrSaveContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83589BF218590FC007F7BEC /* AddOrSaveContactTableViewCell.swift */; };
 		B851A50521842C0A00DAD220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B851A50421842C0A00DAD220 /* AppDelegate.swift */; };
 		B851A50A21842C0A00DAD220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B851A50821842C0A00DAD220 /* Main.storyboard */; };
 		B851A50D21842C0A00DAD220 /* MyContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B851A50B21842C0A00DAD220 /* MyContacts.xcdatamodeld */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B83589B621858EA8007F7BEC /* AddOrEditContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditContactsViewController.swift; sourceTree = "<group>"; };
+		B83589BB218590CE007F7BEC /* ContactDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B83589BD218590E2007F7BEC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		B83589BF218590FC007F7BEC /* AddOrSaveContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrSaveContactTableViewCell.swift; sourceTree = "<group>"; };
 		B851A50121842C0A00DAD220 /* MyContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B851A50421842C0A00DAD220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B851A50921842C0A00DAD220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B83589B821858FA5007F7BEC /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B83589BB218590CE007F7BEC /* ContactDetailTableViewCell.swift */,
+				B83589BD218590E2007F7BEC /* ContactTableViewCell.swift */,
+				B83589BF218590FC007F7BEC /* AddOrSaveContactTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		B851A4F821842C0A00DAD220 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +117,7 @@
 		B851A50321842C0A00DAD220 /* MyContacts */ = {
 			isa = PBXGroup;
 			children = (
+				B83589B821858FA5007F7BEC /* TableViewCells */,
 				B851A537218431CE00DAD220 /* Storyboard */,
 				B851A536218431B200DAD220 /* ViewController */,
 				B851A5352184317900DAD220 /* Model */,
@@ -139,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				B851A53821845C1800DAD220 /* ContactsViewController.swift */,
+				B83589B621858EA8007F7BEC /* AddOrEditContactsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -283,8 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83589C0218590FC007F7BEC /* AddOrSaveContactTableViewCell.swift in Sources */,
+				B83589BE218590E2007F7BEC /* ContactTableViewCell.swift in Sources */,
+				B83589BC218590CE007F7BEC /* ContactDetailTableViewCell.swift in Sources */,
 				B851A50521842C0A00DAD220 /* AppDelegate.swift in Sources */,
 				B851A50D21842C0A00DAD220 /* MyContacts.xcdatamodeld in Sources */,
+				B83589B721858EA8007F7BEC /* AddOrEditContactsViewController.swift in Sources */,
 				B851A53921845C1800DAD220 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="tio-gp-Ow1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="tio-gp-Ow1" customClass="ContactTableViewCell" customModule="MyContacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tio-gp-Ow1" id="m3f-3V-bBg">
@@ -76,6 +76,10 @@
                                                 <constraint firstItem="GdF-39-C7r" firstAttribute="leading" secondItem="pQO-eG-W5R" secondAttribute="trailing" constant="8" id="sar-MU-Z5p"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactName" destination="GdF-39-C7r" id="Ndn-br-yOm"/>
+                                            <outlet property="contactProfileImageView" destination="pQO-eG-W5R" id="SjL-ZX-UPs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -99,7 +103,7 @@
                     <navigationItem key="navigationItem" title="Contacts" id="iE9-cP-CA6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZxS-Or-iVn">
                             <connections>
-                                <segue destination="566-tC-iFn" kind="show" id="ixh-Wc-0Bg"/>
+                                <segue destination="566-tC-iFn" kind="show" identifier="kAddOrEditContactsSegue" id="ixh-Wc-0Bg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -110,12 +114,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yqa-5d-GAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="336.80000000000001" y="0.44977511244377816"/>
+            <point key="canvasLocation" x="382" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Or Edit Contacts View Controller-->
         <scene sceneID="g0S-SW-odq">
             <objects>
-                <viewController id="566-tC-iFn" sceneMemberID="viewController">
+                <viewController id="566-tC-iFn" customClass="AddOrEditContactsViewController" customModule="MyContacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ug-Am-hMt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +134,7 @@
                                 <rect key="frame" x="0.0" y="214" width="375" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="73" id="ZBy-cS-9Db">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="73" id="ZBy-cS-9Db" customClass="ContactDetailTableViewCell" customModule="MyContacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZBy-cS-9Db" id="uf2-Kx-hY3">
@@ -151,8 +155,11 @@
                                                 <constraint firstItem="B5V-8h-xt6" firstAttribute="top" secondItem="uf2-Kx-hY3" secondAttribute="topMargin" constant="10" id="eYO-wh-SrI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactDetailTextField" destination="B5V-8h-xt6" id="lan-sK-nFN"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="38" id="ANW-5M-dQl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="38" id="ANW-5M-dQl" customClass="AddOrSaveContactTableViewCell" customModule="MyContacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="101" width="375" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANW-5M-dQl" id="D8O-Ct-0Cw">
@@ -173,6 +180,9 @@
                                                 <constraint firstItem="OSU-g2-i5L" firstAttribute="top" secondItem="D8O-Ct-0Cw" secondAttribute="top" id="lhM-nv-Nca"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addOrSaveContactLabel" destination="OSU-g2-i5L" id="hHD-45-vsv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -189,6 +199,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bM4-DT-jq2"/>
                     </view>
+                    <connections>
+                        <outlet property="contactDetailsListTableView" destination="TTL-b2-FYP" id="oif-ew-fdt"/>
+                        <outlet property="contactProfileImage" destination="f9H-Om-VXn" id="BQZ-Cw-acc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4O-yE-VIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,9 +13,14 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var contactsSearchBar: UISearchBar!
     @IBOutlet weak var contactsListTableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+     // MARK: - Navigation
+     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+    
 
-    }
 
 }
