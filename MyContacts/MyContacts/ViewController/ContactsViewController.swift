@@ -37,13 +37,9 @@ class ContactsViewController: UIViewController {
         return _fetchedResultsController!
     }
     
-    
     @IBOutlet weak var contactsSearchBar: UISearchBar!
     @IBOutlet weak var contactsListTableView: UITableView!
     
-    
-     // MARK: - Navigation
-     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "kAddContactSegue") {
             if let addContactViewController = segue.destination as? AddContactViewController {
@@ -51,6 +47,26 @@ class ContactsViewController: UIViewController {
             }
         }
      }
+    
+    func modifyListViewForChangeOf(type: NSFetchedResultsChangeType, in indexPathSet:[IndexPath]) {
+        
+        switch type {
+            
+        case .delete:
+            self.contactsListTableView.deleteRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
+            
+        case .insert:
+            self.contactsListTableView.insertRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
+            
+        case .move:
+            //While move we need to reload tableView.
+            //We must animate between beginUpdate and endUpdate while reloading: https://developer.apple.com/documentation/uikit/uitableview/1614908-beginupdates
+            UIView.transition(with: self.contactsListTableView, duration: 1.0, options: .curveLinear, animations: {self.contactsListTableView.reloadData()}, completion: nil)
+            
+        case .update:
+            self.contactsListTableView.reloadRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
+        }
+    }
 }
 
 extension ContactsViewController: UITableViewDataSource {
@@ -98,28 +114,6 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
-extension ContactsViewController {
-    
-    func modifyListViewForChangeOf(type: NSFetchedResultsChangeType, in indexPathSet:[IndexPath]) {
-        
-        switch type {
-            
-        case .delete:
-            self.contactsListTableView.deleteRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
-            
-        case .insert:
-            self.contactsListTableView.insertRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
-            
-        case .move:
-            //While move we need to reload tableView.
-            //We must animate between beginUpdate and endUpdate while reloading: https://developer.apple.com/documentation/uikit/uitableview/1614908-beginupdates
-            UIView.transition(with: self.contactsListTableView, duration: 1.0, options: .curveLinear, animations: {self.contactsListTableView.reloadData()}, completion: nil)
-            
-        case .update:
-            self.contactsListTableView.reloadRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
-        }
-    }
-}
 
 extension ContactsViewController: AddContactViewDelegate {
     

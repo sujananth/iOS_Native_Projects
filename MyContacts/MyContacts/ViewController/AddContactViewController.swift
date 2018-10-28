@@ -44,12 +44,23 @@ class AddContactViewController: UIViewController {
     @IBAction func onTappingAddContactButton(_ sender: Any) {
         
         guard let firstName = self.firstNameTextField.text, let lastName = self.lastNameTextField.text, let email = self.emailTextField.text, let mobileNumber = Int64(self.mobileNumberTextField.text!), let countryCode = self.countryCodeTextField.text else {
-            
+            //Throw error invalid input
             return
+        }
+        
+        if(!isValidEmail(emailID: email)) {
+            //Throw error with message"Enter a valid email ID"
         }
         
         let contact = (firstName: firstName, lastName: lastName, emailId: email, mobile: mobileNumber, countryCode: countryCode)
         self.delegate?.addContact(contact)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func isValidEmail(emailID:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: emailID)
     }
 }
