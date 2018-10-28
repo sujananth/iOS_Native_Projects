@@ -1,5 +1,5 @@
 //
-//  AddOrEditContactsViewController.swift
+//  AddContactViewController.swift
 //  MyContacts
 //
 //  Created by Sujananth on 10/28/18.
@@ -7,6 +7,11 @@
 //
 
 import UIKit
+
+enum PageType {
+    case edit
+    case add
+}
 
 enum ContactDetails: Int, CaseIterable {
     case firstName
@@ -17,15 +22,23 @@ enum ContactDetails: Int, CaseIterable {
 }
 
 protocol AddOrEditContactsViewDelegate: class {
-    func saveContact()
-    func addContact()
+    func saveContact(_ contact: Contact)
+    func addContact(_ contact: Contact)
 }
 
-class AddOrEditContactsViewController: UIViewController {
+class AddContactViewController: UIViewController {
 
-    @IBOutlet weak var contactProfileImage: UIImageView!
-    @IBOutlet weak var contactDetailsListTableView: UITableView!
+    weak var delegate: AddOrEditContactsViewDelegate?
+    var pageType: PageType?
     
+    @IBOutlet weak var contactProfileImage: UIImageView!
+    
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var mobileNumberTextField: UITextField!
+    @IBOutlet weak var countryCodeTextField: UITextField!
     @IBOutlet weak var addOrSaveContactButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,46 +46,23 @@ class AddOrEditContactsViewController: UIViewController {
     }
     
     @IBAction func onTappingAddOrSaveContactButton(_ sender: Any) {
+        let contact = Contact()
+        contact.firstName = self.firstNameTextField.text
+        contact.lastName = self.lastNameTextField.text
+        contact.emailID = self.emailTextField.text
+        if let mobileNumber = Int64(self.mobileNumberTextField.text!) {
+            contact.mobileNumber = mobileNumber
+        }
+        contact.countryCode = self.countryCodeTextField.text
         
-    }
-}
-
-extension AddOrEditContactsViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ContactDetails.allCases.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let contactDetailCell = tableView.dequeueReusableCell(withIdentifier: "kContactDetailCellID", for: indexPath)
-        if let detailCell = contactDetailCell as? ContactDetailTableViewCell {
-            addPlaceHolderValueTo(cell: detailCell, index: indexPath.row)
+        if(pageType == .edit) {
+            self.delegate?.saveContact(contact)
+        } else if(pageType == .add) {
+            self.delegate?.addContact(contact)
+        } else {
+            //Throw error to user as unable to save contact and log the error message with unkown page type.
         }
-        return contactDetailCell
-    }
-}
+        self.navigationController?.popViewController(animated: true)
 
-extension AddOrEditContactsViewController: UITableViewDelegate {
-    
-}
-
-extension AddOrEditContactsViewController {
-    
-    func addPlaceHolderValueTo( cell: ContactDetailTableViewCell, index:Int) {
-        switch index {
-        case ContactDetails.firstName.hashValue:
-            cell.contactDetailTextField.placeholder = "First Name"
-        case ContactDetails.lastName.hashValue:
-            cell.contactDetailTextField.placeholder = "Last Name"
-        case ContactDetails.email.hashValue:
-            cell.contactDetailTextField.placeholder = "Email"
-        case ContactDetails.mobile.hashValue:
-            cell.contactDetailTextField.placeholder = "Mobile"
-        case ContactDetails.countryCode.hashValue:
-            cell.contactDetailTextField.placeholder = "Country Code"
-        default:
-            cell.contactDetailTextField.placeholder = ""
-        }
     }
-    
 }

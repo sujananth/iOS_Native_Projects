@@ -45,7 +45,11 @@ class ContactsViewController: UIViewController {
      // MARK: - Navigation
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if(segue.identifier == "kAddContactSegue") {
+            if let addContactViewController = segue.destination as? AddContactViewController {
+                addContactViewController.delegate = self
+            }
+        }
      }
 }
 
@@ -57,12 +61,12 @@ extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let contactCell = tableView.dequeueReusableCell(withIdentifier: "kContactCellID", for: indexPath)
+        let dateDescriptionEntity = self.fetchedResultsController.object(at: indexPath)
+        if let contact = contactCell as? ContactTableViewCell, let firstName =  dateDescriptionEntity.firstName, let lastName = dateDescriptionEntity.lastName{
+            contact.contactName.text = firstName + " " + lastName
+        }
         return contactCell
     }
-}
-
-extension ContactsViewController: UITableViewDelegate {
-    
 }
 
 extension ContactsViewController: NSFetchedResultsControllerDelegate {
@@ -78,11 +82,9 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
                     for type: NSFetchedResultsChangeType,
                     newIndexPath: IndexPath?) {
         
-        //IndexPath will be nill on addition or insertion in ManagedObjectContext: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622296-controller
-        //So while insertion we get indexPath for the object in fetchedResultsController
         if let modifiedIndexPath = indexPath ?? self.fetchedResultsController.indexPath(forObject: anObject as! Contact)  {
-            
-//            self.modifyListViewForChangeOf(type: type, in: [modifiedIndexPath])
+
+            self.modifyListViewForChangeOf(type: type, in: [modifiedIndexPath])
         } else {
             
             print("Error: index path for modified data is nill")
@@ -94,7 +96,6 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
         
         self.contactsListTableView.endUpdates()
     }
-    
 }
 
 extension ContactsViewController {
@@ -118,32 +119,18 @@ extension ContactsViewController {
             self.contactsListTableView.reloadRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
         }
     }
+}
+
+extension ContactsViewController: AddContactViewDelegate {
     
-    func updateManagedObjectContextOf(date: String) {
-        
-        let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "dateInfo = '\(date)'")
-        do {
-            
-            guard let _context = self.managedObjectContext else { return }
-            let test = try _context.fetch(fetchRequest)
-            if test.count == 1 {
-                
-                let objectUpdate = test[0] as NSManagedObject
-//                objectUpdate.setValue(self.getDateTimeWithNanoSecond(), forKey: "dateInfo")
-//                objectUpdate.setValue("Tap a Cell to update Date Time", forKey: "additionalInfo")
-            }
-        } catch {
-            
-            print(error)
-        }
-    }
-    
-    func addToManagedObjectContext() {
-        
+    func addContact(_ contactDetails: contactDetails) {
         guard let _context = self.managedObjectContext else { return }
         let object = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: _context) as! Contact
-//        object.dateInfo = self.getDateTimeWithNanoSecond()
-//        object.additionalInfo = "Slide Left to delete Cells"
+        object.firstName = contactDetails.firstName
+        object.lastName = contactDetails.lastName
+        object.emailID = contactDetails.emailId
+        object.mobileNumber = contactDetails.mobile
+        object.countryCode = contactDetails.countryCode
     }
 }
+    
