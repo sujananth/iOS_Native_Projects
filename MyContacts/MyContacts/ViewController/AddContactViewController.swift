@@ -17,6 +17,7 @@ protocol AddContactViewDelegate: class {
 
 class AddContactViewController: UIViewController {
 
+    
     weak var delegate: AddContactViewDelegate?
     
     @IBOutlet weak var contactProfileImage: UIImageView!
@@ -30,6 +31,8 @@ class AddContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,17 +42,16 @@ class AddContactViewController: UIViewController {
         self.navigationController?.title = "Add Contact"
     }
     
-    
-    
     @IBAction func onTappingAddContactButton(_ sender: Any) {
         
         guard let firstName = self.firstNameTextField.text, let lastName = self.lastNameTextField.text, let email = self.emailTextField.text, let mobileNumber = Int64(self.mobileNumberTextField.text!), let countryCode = self.countryCodeTextField.text else {
-            //Throw error invalid input
+             self.displayAlertWith(message: "Invalid input")
             return
         }
         
         if(!isValidEmail(emailID: email)) {
-            //Throw error with message"Enter a valid email ID"
+            self.displayAlertWith(message: "Please enter a valid email ID")
+            return
         }
         
         let contact = (firstName: firstName, lastName: lastName, emailId: email, mobile: mobileNumber, countryCode: countryCode)
@@ -62,5 +64,15 @@ class AddContactViewController: UIViewController {
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: emailID)
+    }
+    
+    func displayAlertWith( message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func handleTap() {
+        self.view.endEditing(true)
     }
 }
