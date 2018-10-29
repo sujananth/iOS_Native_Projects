@@ -83,6 +83,13 @@ extension ContactsViewController: UITableViewDataSource {
         }
         return contactCell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if(editingStyle == UITableViewCell.EditingStyle.delete) {
+            self.managedObjectContext?.delete(self.fetchedResultsController.object(at: indexPath))
+        }
+    }
 }
 
 extension ContactsViewController: NSFetchedResultsControllerDelegate {
@@ -118,6 +125,7 @@ extension ContactsViewController: NSFetchedResultsControllerDelegate {
 extension ContactsViewController: AddContactViewDelegate {
     
     func addContact(_ contactDetails: contactDetails) {
+        
         guard let _context = self.managedObjectContext else { return }
         let object = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: _context) as! Contact
         object.firstName = contactDetails.firstName
