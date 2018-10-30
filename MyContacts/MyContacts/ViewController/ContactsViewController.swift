@@ -15,7 +15,7 @@ class ContactsViewController: UIViewController, UISearchBarDelegate {
     var managedObjectContext: NSManagedObjectContext? = nil
     var _fetchedResultsController: NSFetchedResultsController<Contact>? = nil
     var fetchedResultsController: NSFetchedResultsController<Contact> {
-        
+    
         if(_fetchedResultsController != nil) {
             return _fetchedResultsController!
         }
@@ -79,7 +79,14 @@ class ContactsViewController: UIViewController, UISearchBarDelegate {
             return
         }
         let searchPredicate = NSPredicate(format: "name contains[c] %@", searchText)
+        fetchedResultsController.fetchRequest.predicate = searchPredicate
         
+        do {
+            try _fetchedResultsController!.performFetch()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved Error \(nserror), \(nserror.userInfo)")
+        }
         self.contactsListTableView.reloadData()
     }
 }
