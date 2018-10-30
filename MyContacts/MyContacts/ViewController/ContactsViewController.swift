@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: UIViewController, UISearchBarDelegate {
     
     var managedObjectContext: NSManagedObjectContext? = nil
     var _fetchedResultsController: NSFetchedResultsController<Contact>? = nil
@@ -40,6 +40,10 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var contactsSearchBar: UISearchBar!
     @IBOutlet weak var contactsListTableView: UITableView!
     
+    override func viewDidLoad() {
+        self.contactsSearchBar.delegate = self
+    }
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "kAddContactSegue") {
             if let addContactViewController = segue.destination as? AddContactViewController {
@@ -66,6 +70,17 @@ class ContactsViewController: UIViewController {
         case .update:
             self.contactsListTableView.reloadRows(at: indexPathSet, with: UITableView.RowAnimation.fade)
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.view.endEditing(true)
+        guard let searchText = self.contactsSearchBar.text else {
+            return
+        }
+        let searchPredicate = NSPredicate(format: "name contains[c] %@", searchText)
+        
+        self.contactsListTableView.reloadData()
     }
 }
 

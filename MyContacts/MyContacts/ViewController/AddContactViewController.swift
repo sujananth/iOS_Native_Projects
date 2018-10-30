@@ -33,6 +33,7 @@ class AddContactViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.view.addGestureRecognizer(tap)
+        self.countryCodeTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +41,14 @@ class AddContactViewController: UIViewController {
         
         self.contactProfileImage.image = UIImage(named: "ContactProfilePlaceHolder")
         self.navigationController?.title = "Add Contact"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "kCountryListSegue") {
+            if let countryListViewController = segue.destination as? CountryListViewController {
+                countryListViewController.delegate = self
+            }
+        }
     }
     
     @IBAction func onTappingAddContactButton(_ sender: Any) {
@@ -60,8 +69,8 @@ class AddContactViewController: UIViewController {
     }
     
     func isValidEmail(emailID:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: emailID)
     }
@@ -74,5 +83,23 @@ class AddContactViewController: UIViewController {
     
     @objc func handleTap() {
         self.view.endEditing(true)
+    }
+}
+
+extension AddContactViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if(textField == self.countryCodeTextField) {
+            self.performSegue(withIdentifier: "kCountryListSegue", sender: self)
+            return false
+        }
+        return true
+    }
+}
+
+extension AddContactViewController: CountryListDelegate {
+    
+    func didSelect(_ country: Country) {
+        self.countryCodeTextField.text =  country.alpha2Code
     }
 }

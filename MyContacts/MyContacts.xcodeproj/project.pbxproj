@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8311764218781BB00D020E7 /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8311763218781BB00D020E7 /* CountryListViewController.swift */; };
 		B83589B721858EA8007F7BEC /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83589B621858EA8007F7BEC /* AddContactViewController.swift */; };
 		B83589BE218590E2007F7BEC /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83589BD218590E2007F7BEC /* ContactTableViewCell.swift */; };
 		B8358A092185F75F007F7BEC /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B851A53821845C1800DAD220 /* ContactsViewController.swift */; };
+		B8387A4221878ACD0016290E /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8387A4121878ACD0016290E /* Country.swift */; };
 		B851A50521842C0A00DAD220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B851A50421842C0A00DAD220 /* AppDelegate.swift */; };
 		B851A50A21842C0A00DAD220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B851A50821842C0A00DAD220 /* Main.storyboard */; };
 		B851A50D21842C0A00DAD220 /* MyContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B851A50B21842C0A00DAD220 /* MyContacts.xcdatamodeld */; };
@@ -37,10 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B8311763218781BB00D020E7 /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
 		B83589B621858EA8007F7BEC /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		B83589BD218590E2007F7BEC /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		B8358A032185E340007F7BEC /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B8358A042185E340007F7BEC /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B8387A4121878ACD0016290E /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		B851A50121842C0A00DAD220 /* MyContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B851A50421842C0A00DAD220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B851A50921842C0A00DAD220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B8358A022185E25D007F7BEC /* CoreDataModel */,
+				B8387A4121878ACD0016290E /* Country.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			children = (
 				B851A53821845C1800DAD220 /* ContactsViewController.swift */,
 				B83589B621858EA8007F7BEC /* AddContactViewController.swift */,
+				B8311763218781BB00D020E7 /* CountryListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -309,7 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8387A4221878ACD0016290E /* Country.swift in Sources */,
 				B83589BE218590E2007F7BEC /* ContactTableViewCell.swift in Sources */,
+				B8311764218781BB00D020E7 /* CountryListViewController.swift in Sources */,
 				B8358A092185F75F007F7BEC /* ContactsViewController.swift in Sources */,
 				B851A50521842C0A00DAD220 /* AppDelegate.swift in Sources */,
 				B851A50D21842C0A00DAD220 /* MyContacts.xcdatamodeld in Sources */,
