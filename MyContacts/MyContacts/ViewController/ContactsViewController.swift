@@ -75,19 +75,20 @@ class ContactsViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         self.view.endEditing(true)
-        guard let searchText = self.contactsSearchBar.text else {
-            return
+        if(searchBar.text != "") {
+            self.updateContactsListWith(searchText: self.contactsSearchBar.text)
+        } else {
+            self.updateContactsListWith(searchText: nil)
         }
-        let searchPredicate = NSPredicate(format: "name contains[c] %@", searchText)
-        fetchedResultsController.fetchRequest.predicate = searchPredicate
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved Error \(nserror), \(nserror.userInfo)")
+        if(searchBar.text != "") {
+            self.updateContactsListWith(searchText: self.contactsSearchBar.text)
+        } else {
+            self.updateContactsListWith(searchText: nil)
         }
-        self.contactsListTableView.reloadData()
     }
 }
 
@@ -155,6 +156,24 @@ extension ContactsViewController: AddContactViewDelegate {
         object.emailID = contactDetails.emailId
         object.mobileNumber = contactDetails.mobile
         object.countryCode = contactDetails.countryCode
+    }
+    
+    func updateContactsListWith(searchText: String?) {
+        
+        if let firstNameSearchString = searchText {
+            let searchPredicate = NSPredicate(format: "firstName contains[c] %@", firstNameSearchString)
+            fetchedResultsController.fetchRequest.predicate = searchPredicate
+        } else {
+            let predicate1 = NSPredicate(format: "firstName != nil")
+            fetchedResultsController.fetchRequest.predicate = predicate1
+        }
+        do {
+            try _fetchedResultsController!.performFetch()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved Error \(nserror), \(nserror.userInfo)")
+        }
+        self.contactsListTableView.reloadData()
     }
 }
     
