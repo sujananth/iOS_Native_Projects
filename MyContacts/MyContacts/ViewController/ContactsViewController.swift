@@ -82,14 +82,15 @@ class ContactsViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
         if(searchBar.text != "") {
             self.updateContactsListWith(searchText: self.contactsSearchBar.text)
         } else {
             self.updateContactsListWith(searchText: nil)
         }
     }
+
 }
 
 extension ContactsViewController: UITableViewDataSource {
@@ -164,8 +165,8 @@ extension ContactsViewController: AddContactViewDelegate {
             let searchPredicate = NSPredicate(format: "firstName contains[c] %@", firstNameSearchString)
             fetchedResultsController.fetchRequest.predicate = searchPredicate
         } else {
-            let predicate1 = NSPredicate(format: "firstName != nil")
-            fetchedResultsController.fetchRequest.predicate = predicate1
+            let fetchAllNonNillPredicate = NSPredicate(format: "firstName != nil")
+            fetchedResultsController.fetchRequest.predicate = fetchAllNonNillPredicate
         }
         do {
             try _fetchedResultsController!.performFetch()
